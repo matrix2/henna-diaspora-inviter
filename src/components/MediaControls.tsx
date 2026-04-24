@@ -1,9 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import { Pause, Play, Volume2, VolumeX, ArrowDownUp } from "lucide-react";
+import { Pause, Play, Volume2, VolumeX } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-// Palestinian henna / wedding song (royalty-free Arabic oud instrumental fallback).
-// Using a public CDN sample so it works without external accounts.
+// Palestinian / Arabic oud instrumental (royalty-free).
 const SONG_URL =
   "https://cdn.pixabay.com/download/audio/2022/10/30/audio_946b6e6b3a.mp3?filename=arabic-oud-traditional-126850.mp3";
 
@@ -13,6 +12,7 @@ const MediaControls = () => {
   const [scrolling, setScrolling] = useState(true);
   const scrollRaf = useRef<number | null>(null);
   const lastTs = useRef<number | null>(null);
+  const programmaticScroll = useRef(false);
 
   // ---------- Auto Scroll ----------
   useEffect(() => {
@@ -21,7 +21,7 @@ const MediaControls = () => {
       lastTs.current = null;
       return;
     }
-    const SPEED = 25; // px per second
+    const SPEED = 30; // px per second
     const step = (ts: number) => {
       if (lastTs.current == null) lastTs.current = ts;
       const dt = (ts - lastTs.current) / 1000;
@@ -29,12 +29,14 @@ const MediaControls = () => {
 
       const max = document.documentElement.scrollHeight - window.innerHeight;
       const next = window.scrollY + SPEED * dt;
+      programmaticScroll.current = true;
       if (next >= max - 1) {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-        lastTs.current = null;
+        window.scrollTo({ top: 0 });
       } else {
         window.scrollTo({ top: next });
       }
+      // release flag on next tick
+      setTimeout(() => (programmaticScroll.current = false), 0);
       scrollRaf.current = requestAnimationFrame(step);
     };
     scrollRaf.current = requestAnimationFrame(step);
@@ -43,57 +45,78 @@ const MediaControls = () => {
     };
   }, [scrolling]);
 
-  // Pause auto-scroll when user interacts (wheel/touch)
+  // Pause auto-scroll only on REAL user wheel/touch (not our programmatic scrolls)
   useEffect(() => {
-    const stop = () => setScrolling(false);
-    window.addEventListener("wheel", stop, { passive: true, once: true });
-    window.addEventListener("touchstart", stop, { passive: true, once: true });
+    const stop = () => {
+      if (programmaticScroll.current) return;
+      setScrolling(false);
+    };
+    window.addEventListener("wheel", stop, { passive: true });
+    window.addEventListener("touchmove", stop, { passive: true });
     return () => {
       window.removeEventListener("wheel", stop);
-      window.removeEventListener("touchstart", stop);
+      window.removeEventListener("touchmove", stop);
     };
   }, []);
 
-  // ---------- Audio autoplay ----------
+  // ---------- Audio: start on first user interaction (autoplay policy) ----------
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
     audio.volume = 0.55;
-    const tryPlay = async () => {
+
+    const start = async () => {
       try {
         await audio.play();
         setPlaying(true);
       } catch {
-        // autoplay blocked — wait for first user interaction
-        const resume = async () => {
-          try {
-            await audio.play();
-            setPlaying(true);
-          } catch {}
-          window.removeEventListener("click", resume);
-          window.removeEventListener("touchstart", resume);
-        };
-        window.addEventListener("click", resume, { once: true });
-        window.addEventListener("touchstart", resume, { once: true });
+        /* will retry on next gesture */
       }
     };
-    tryPlay();
+
+    // Try immediately (works if user already interacted with the page)
+    start();
+
+    const onGesture = () => {
+      start();
+    };
+    window.addEventListener("click", onGesture);
+    window.addEventListener("touchstart", onGesture, { passive: true });
+    window.addEventListener("keydown", onGesture);
+    return () => {
+      window.removeEventListener("click", onGesture);
+      window.removeEventListener("touchstart", onGesture);
+      window.removeEventListener("keydown", onGesture);
+    };
+  }, []);
+
+  // Sync state if audio plays/pauses externally
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    const onPlay = () => setPlaying(true);
+    const onPause = () => setPlaying(false);
+    audio.addEventListener("play", onPlay);
+    audio.addEventListener("pause", onPause);
+    return () => {
+      audio.removeEventListener("play", onPlay);
+      audio.removeEventListener("pause", onPause);
+    };
   }, []);
 
   const toggleAudio = () => {
     const audio = audioRef.current;
     if (!audio) return;
     if (audio.paused) {
-      audio.play().then(() => setPlaying(true)).catch(() => {});
+      audio.play().catch(() => {});
     } else {
       audio.pause();
-      setPlaying(false);
     }
   };
 
   return (
     <>
-      <audio ref={audioRef} src={SONG_URL} loop preload="auto" />
+      <audio ref={audioRef} src={SONG_URL} loop preload="auto" playsInline />
 
       <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 px-3 py-2 rounded-full bg-card/90 border border-gold/50 backdrop-blur-md shadow-deep">
         <button
@@ -107,7 +130,7 @@ const MediaControls = () => {
           )}
         >
           {playing ? <Volume2 className="w-4 h-4" /> : <VolumeX className="w-4 h-4" />}
-          <span>{playing ? "موسيقى" : "صامت"}</span>
+          <span>{playing ? "موسيقى" : "تشغيل الموسيقى"}</span>
         </button>
 
         <span className="w-px h-5 bg-gold/30" />
