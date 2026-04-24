@@ -1,10 +1,12 @@
 import Keffiyeh from "@/components/Keffiyeh";
 import Poster from "@/components/Poster";
 import RsvpForm from "@/components/RsvpForm";
+import MediaControls from "@/components/MediaControls";
 
 const Index = () => {
   return (
     <main className="relative min-h-screen overflow-x-hidden" dir="rtl">
+      <MediaControls />
       {/* Keffiyeh side strips */}
       <Keffiyeh side="left" />
       <Keffiyeh side="right" />
