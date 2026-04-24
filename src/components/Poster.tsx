@@ -158,15 +158,6 @@ const HeritagePoster = ({ variant, titleColor, brideColor, accentColor, dateColo
     </div>
   </div>
 );
-      titleColor={titleColor}
-      brideColor={brideColor}
-      accentColor={accentColor}
-      dateColor={dateColor}
-      mutedColor="hsl(0 0% 25%)"
-      bodyColor="hsl(0 0% 28%)"
-    />
-  </div>
-);
 
 /* =============== Shared body — same layout & fonts for all themes =============== */
 interface BodyProps {
