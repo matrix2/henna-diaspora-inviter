@@ -121,9 +121,43 @@ const HeritagePoster = ({ variant, titleColor, brideColor, accentColor, dateColo
       <img src={heritageBg} alt="" className="w-full h-full object-cover" aria-hidden="true" />
     </div>
     {/* Soft tinted overlay to push the parchment center forward */}
-    <div className="absolute inset-0 bg-gradient-to-b from-[hsl(42_60%_92%)]/40 via-[hsl(42_55%_90%)]/55 to-[hsl(42_60%_92%)]/45" />
+    <div className="absolute inset-0 bg-gradient-to-b from-[hsl(42_60%_92%)]/25 via-[hsl(42_55%_90%)]/35 to-[hsl(42_60%_92%)]/30" />
 
     <PosterBody
+      titleColor={titleColor}
+      brideColor={brideColor}
+      accentColor={accentColor}
+      dateColor={dateColor}
+      mutedColor="hsl(0 0% 25%)"
+      bodyColor="hsl(0 0% 28%)"
+    />
+
+    {/* Text on the tambourine (bottom-right of the heritage image) */}
+    <div
+      className="absolute pointer-events-none z-30"
+      style={{
+        right: "6%",
+        bottom: "7%",
+        width: "26%",
+        transform: "rotate(-12deg)",
+        textAlign: "center",
+      }}
+      aria-hidden="true"
+    >
+      <p
+        className="font-display leading-tight"
+        style={{
+          color: "hsl(0 75% 28%)",
+          fontSize: "clamp(10px, 2.6vw, 15px)",
+          textShadow: "0 1px 1px hsl(42 60% 90% / 0.6)",
+          letterSpacing: "0.02em",
+        }}
+      >
+        حنّة العروس
+      </p>
+    </div>
+  </div>
+);
       titleColor={titleColor}
       brideColor={brideColor}
       accentColor={accentColor}
