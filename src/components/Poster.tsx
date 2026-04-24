@@ -3,6 +3,7 @@ import tatreezStrip from "@/assets/tatreez-strip.jpg";
 import parchment from "@/assets/parchment-bg.jpg";
 import medallion from "@/assets/tatreez-medallion.png";
 import heritageBg from "@/assets/heritage-bg.png";
+import hennaBg from "@/assets/henna-palestine-bg.jpg";
 import Countdown from "./Countdown";
 import { cn } from "@/lib/utils";
 
@@ -45,24 +46,8 @@ const Poster = () => {
       <div className="absolute -inset-4 top-16 bg-gradient-to-br from-gold/20 via-primary/10 to-gold/20 blur-2xl rounded-[2rem]" />
 
       {theme === "tatreez" && <TatreezPoster />}
-      {theme === "ivory" && (
-        <HeritagePoster
-          variant="ivory"
-          titleColor="hsl(80 40% 28%)"
-          brideColor="hsl(80 35% 25%)"
-          accentColor="hsl(80 35% 35%)"
-          dateColor="hsl(80 40% 28%)"
-        />
-      )}
-      {theme === "henna" && (
-        <HeritagePoster
-          variant="henna"
-          titleColor="hsl(345 70% 30%)"
-          brideColor="hsl(345 75% 28%)"
-          accentColor="hsl(345 65% 35%)"
-          dateColor="hsl(345 70% 30%)"
-        />
-      )}
+      {theme === "ivory" && <IvoryPoster />}
+      {theme === "henna" && <HennaPoster />}
     </div>
   );
 };
@@ -98,44 +83,206 @@ const TatreezPoster = () => (
       dateColor="hsl(0 75% 35%)"
       mutedColor="hsl(0 0% 25%)"
       bodyColor="hsl(0 0% 30%)"
+      showOliveLeaves
+      showTopMedallion
     />
   </div>
 );
 
-/* =============== HERITAGE BG — for ivory & henna using uploaded background =============== */
-interface HeritagePosterProps {
-  variant: "ivory" | "henna";
-  titleColor: string;
-  brideColor: string;
-  accentColor: string;
-  dateColor: string;
-}
-const HeritagePoster = ({ variant, titleColor, brideColor, accentColor, dateColor }: HeritagePosterProps) => (
+/* =============== IVORY — heritage bg, no olive leaves, date under decorative line =============== */
+const IvoryPoster = () => (
   <div
-    key={variant}
+    key="ivory"
     className="relative rounded-2xl overflow-hidden shadow-deep border-2 animate-fade-up"
-    style={{ borderColor: accentColor + "70" }}
+    style={{ borderColor: "hsl(80 35% 35%)" + "70" }}
   >
-    {/* Heritage background (uploaded image) */}
     <div className="absolute inset-0">
       <img src={heritageBg} alt="" className="w-full h-full object-cover" aria-hidden="true" />
     </div>
-    {/* Soft tinted overlay to push the parchment center forward */}
-    <div className="absolute inset-0 bg-gradient-to-b from-[hsl(42_60%_92%)]/25 via-[hsl(42_55%_90%)]/35 to-[hsl(42_60%_92%)]/30" />
+    <div className="absolute inset-0 bg-gradient-to-b from-[hsl(42_60%_92%)]/20 via-[hsl(42_55%_90%)]/30 to-[hsl(42_60%_92%)]/25" />
 
     <PosterBody
-      titleColor={titleColor}
-      brideColor={brideColor}
-      accentColor={accentColor}
-      dateColor={dateColor}
+      titleColor="hsl(80 40% 28%)"
+      brideColor="hsl(80 35% 25%)"
+      accentColor="hsl(80 35% 35%)"
+      dateColor="hsl(80 40% 28%)"
       mutedColor="hsl(0 0% 25%)"
       bodyColor="hsl(0 0% 28%)"
+      showOliveLeaves={false}
+      showTopMedallion={false}
     />
-
   </div>
 );
 
-/* =============== Shared body — same layout & fonts for all themes =============== */
+/* =============== HENNA — completely new Palestinian heritage design =============== */
+const HennaPoster = () => {
+  const burgundy = "hsl(345 70% 35%)";
+  const gold = "hsl(42 75% 60%)";
+  const goldDeep = "hsl(38 65% 45%)";
+  const cream = "hsl(42 65% 88%)";
+  const creamSoft = "hsl(42 50% 78%)";
+
+  return (
+    <div
+      key="henna"
+      className="relative rounded-2xl overflow-hidden shadow-deep border-2 animate-fade-up"
+      style={{ borderColor: gold + "70" }}
+    >
+      {/* Henna Palestinian background */}
+      <div className="absolute inset-0">
+        <img src={hennaBg} alt="" className="w-full h-full object-cover" aria-hidden="true" />
+      </div>
+      {/* Subtle dark overlay for readability */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[hsl(345_60%_8%)]/40 via-[hsl(345_50%_10%)]/30 to-[hsl(345_60%_8%)]/50" />
+
+      {/* Top gold ornamental frame */}
+      <div className="relative px-10 sm:px-14 py-10 sm:py-12 text-center space-y-4">
+        {/* Star of Palestine ornament */}
+        <div className="flex justify-center animate-fade-up">
+          <div className="relative">
+            <div
+              className="w-16 h-16 flex items-center justify-center text-4xl animate-shimmer"
+              style={{ color: gold, filter: `drop-shadow(0 0 8px ${gold}80)` }}
+            >
+              ✦
+            </div>
+          </div>
+        </div>
+
+        {/* Decorative arabesque divider */}
+        <div className="flex items-center justify-center gap-2 animate-fade-up delay-100">
+          <span style={{ color: gold }}>۞</span>
+          <div
+            className="h-px w-20"
+            style={{ background: `linear-gradient(90deg, transparent, ${gold}, transparent)` }}
+          />
+          <span style={{ color: gold }}>۞</span>
+        </div>
+
+        <p
+          className="font-amiri text-base animate-fade-up delay-100 italic"
+          style={{ color: creamSoft }}
+        >
+          من القدس إلى آرهوس
+        </p>
+
+        {/* Main title */}
+        <div className="animate-fade-up delay-200">
+          <h1
+            className="font-display text-5xl sm:text-6xl leading-tight"
+            style={{
+              color: gold,
+              textShadow: `0 0 20px ${gold}60, 0 2px 4px hsl(345 80% 10%)`,
+            }}
+          >
+            ليلة الحنّاء
+          </h1>
+        </div>
+
+        {/* Bride section in ornate gold frame */}
+        <div
+          className="relative mx-auto max-w-[80%] py-4 px-5 my-3 animate-fade-up delay-300"
+          style={{
+            border: `1px solid ${gold}80`,
+            borderRadius: "0.75rem",
+            background: `linear-gradient(180deg, hsl(345 60% 12% / 0.4), hsl(345 50% 18% / 0.3))`,
+            boxShadow: `inset 0 0 20px ${gold}20`,
+          }}
+        >
+          {/* corner ornaments */}
+          <span className="absolute -top-2 -right-2 text-sm" style={{ color: gold }}>✦</span>
+          <span className="absolute -top-2 -left-2 text-sm" style={{ color: gold }}>✦</span>
+          <span className="absolute -bottom-2 -right-2 text-sm" style={{ color: gold }}>✦</span>
+          <span className="absolute -bottom-2 -left-2 text-sm" style={{ color: gold }}>✦</span>
+
+          <p
+            className="font-body text-xs tracking-[0.4em] mb-2"
+            style={{ color: gold }}
+          >
+            للعروس الفلسطينية
+          </p>
+          <h2
+            className="font-display text-3xl sm:text-4xl"
+            style={{
+              color: cream,
+              textShadow: `0 0 15px ${gold}50`,
+            }}
+          >
+            آية الأشوح
+          </h2>
+        </div>
+
+        {/* Poetic line */}
+        <p
+          className="font-amiri text-sm leading-relaxed animate-fade-up delay-500"
+          style={{ color: creamSoft }}
+        >
+          يا ليلة الحنّا يا ليلة العرس
+          <br />
+          فرحة وطن في غربة الناس
+        </p>
+
+        {/* Decorative divider with star */}
+        <div className="flex items-center justify-center gap-3 py-1">
+          <div
+            className="h-px w-12"
+            style={{ background: `linear-gradient(90deg, transparent, ${gold})` }}
+          />
+          <span className="text-lg" style={{ color: gold }}>✺</span>
+          <div
+            className="h-px w-12"
+            style={{ background: `linear-gradient(90deg, ${gold}, transparent)` }}
+          />
+        </div>
+
+        {/* Date */}
+        <div className="space-y-1 animate-fade-up delay-700">
+          <div className="flex justify-center" style={{ color: gold }}>
+            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M6 2a1 1 0 011 1v1h6V3a1 1 0 112 0v1h1a2 2 0 012 2v11a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2h1V3a1 1 0 011-1zM4 9v8h12V9H4z" />
+            </svg>
+          </div>
+          <p className="font-body text-sm" style={{ color: creamSoft }}>السبت</p>
+          <p
+            className="font-display text-3xl"
+            style={{ color: gold, textShadow: `0 0 12px ${gold}40` }}
+          >
+            ١٣ - ٦ - ٢٠٢٦
+          </p>
+        </div>
+
+        {/* Location */}
+        <div className="space-y-1 animate-fade-up delay-700">
+          <div className="flex justify-center" style={{ color: gold }}>
+            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path
+                fillRule="evenodd"
+                d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </div>
+          <p className="font-display text-xl" style={{ color: cream }}>آرهوس</p>
+          <p className="font-body text-sm" style={{ color: creamSoft }}>الدنمارك</p>
+        </div>
+
+        <div className="pt-3 animate-fade-up delay-700">
+          <Countdown />
+        </div>
+
+        <div className="pt-3 flex items-center justify-center gap-2">
+          <span style={{ color: gold }}>♥</span>
+          <p className="font-amiri text-sm" style={{ color: creamSoft }}>
+            بحضوركم تكتمل فرحتنا
+          </p>
+          <span style={{ color: gold }}>♥</span>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+/* =============== Shared body — used by tatreez & ivory =============== */
 interface BodyProps {
   titleColor: string;
   brideColor: string;
@@ -143,18 +290,34 @@ interface BodyProps {
   dateColor: string;
   mutedColor: string;
   bodyColor: string;
+  showOliveLeaves?: boolean;
+  showTopMedallion?: boolean;
 }
-const PosterBody = ({ titleColor, brideColor, accentColor, dateColor, mutedColor, bodyColor }: BodyProps) => (
+const PosterBody = ({
+  titleColor,
+  brideColor,
+  accentColor,
+  dateColor,
+  mutedColor,
+  bodyColor,
+  showOliveLeaves = true,
+  showTopMedallion = true,
+}: BodyProps) => (
   <div className="relative px-12 sm:px-16 py-10 sm:py-12 text-center space-y-5">
-    {/* Top medallion */}
-    <div className="flex justify-center animate-fade-up">
-      <img
-        src={medallion}
-        alt=""
-        className="w-20 h-20 animate-shimmer"
-        style={{ filter: `drop-shadow(0 2px 6px ${accentColor}40)` }}
-      />
-    </div>
+    {/* Top medallion (hidden for ivory — already on the heritage bg) */}
+    {showTopMedallion && (
+      <div className="flex justify-center animate-fade-up">
+        <img
+          src={medallion}
+          alt=""
+          className="w-20 h-20 animate-shimmer"
+          style={{ filter: `drop-shadow(0 2px 6px ${accentColor}40)` }}
+        />
+      </div>
+    )}
+
+    {/* For ivory: spacer to align under the embroidered medallion in the bg */}
+    {!showTopMedallion && <div className="h-16 sm:h-20" />}
 
     <p className="font-amiri text-base animate-fade-up delay-100" style={{ color: mutedColor }}>
       أهلاً وسهلاً بكم في
@@ -167,10 +330,14 @@ const PosterBody = ({ titleColor, brideColor, accentColor, dateColor, mutedColor
       >
         حفلة الحنّة
       </h1>
-      <span className="absolute -right-2 top-1/2 -translate-y-1/2 text-2xl opacity-80">🌿</span>
-      <span className="absolute -left-2 top-1/2 -translate-y-1/2 text-2xl opacity-80 scale-x-[-1] inline-block">
-        🌿
-      </span>
+      {showOliveLeaves && (
+        <>
+          <span className="absolute -right-2 top-1/2 -translate-y-1/2 text-2xl opacity-80">🌿</span>
+          <span className="absolute -left-2 top-1/2 -translate-y-1/2 text-2xl opacity-80 scale-x-[-1] inline-block">
+            🌿
+          </span>
+        </>
+      )}
     </div>
 
     <div className="space-y-2 animate-fade-up delay-300">
@@ -195,6 +362,7 @@ const PosterBody = ({ titleColor, brideColor, accentColor, dateColor, mutedColor
       في ليلة من تراثنا الفلسطيني الأصيل
     </p>
 
+    {/* Decorative divider */}
     <div className="flex items-center justify-center gap-2">
       <span className="text-lg" style={{ color: "hsl(38 70% 45%)" }}>۞</span>
       <div
@@ -204,6 +372,7 @@ const PosterBody = ({ titleColor, brideColor, accentColor, dateColor, mutedColor
       <span className="text-lg" style={{ color: "hsl(38 70% 45%)" }}>۞</span>
     </div>
 
+    {/* Date — under the decorative line */}
     <div className="space-y-2 animate-fade-up delay-700">
       <div className="flex justify-center" style={{ color: accentColor }}>
         <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
