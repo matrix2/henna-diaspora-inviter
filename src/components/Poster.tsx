@@ -220,7 +220,7 @@ const HennaPoster = () => {
             آية الأشوح
           </h2>
           <p className="font-body text-xs mt-1" style={{ color: creamSoft }} dir="ltr">
-            Aya Al-Ashwah
+            Aya El Achwah
           </p>
         </div>
 
@@ -388,7 +388,7 @@ const PosterBody = ({
         آية الأشوح
       </h2>
       <p className="font-body text-xs" style={{ color: bodyColor }} dir="ltr">
-        Aya Al-Ashwah
+        Aya El Achwah
       </p>
     </div>
 
