@@ -165,6 +165,9 @@ const HennaPoster = () => {
         >
           من القدس إلى آرهوس
         </p>
+        <p className="font-body text-[11px] tracking-wide -mt-2" style={{ color: creamSoft, opacity: 0.8 }} dir="ltr">
+          Fra Jerusalem til Aarhus
+        </p>
 
         {/* Main title */}
         <div className="animate-fade-up delay-200">
@@ -177,6 +180,9 @@ const HennaPoster = () => {
           >
             ليلة الحنّاء
           </h1>
+          <p className="font-body text-xs tracking-[0.3em] mt-1" style={{ color: creamSoft }} dir="ltr">
+            HENNA-AFTENEN
+          </p>
         </div>
 
         {/* Bride section in ornate gold frame */}
@@ -201,6 +207,9 @@ const HennaPoster = () => {
           >
             للعروس الفلسطينية
           </p>
+          <p className="font-body text-[10px] tracking-[0.25em] mb-2" style={{ color: creamSoft, opacity: 0.85 }} dir="ltr">
+            TIL DEN PALÆSTINENSISKE BRUD
+          </p>
           <h2
             className="font-display text-3xl sm:text-4xl"
             style={{
@@ -210,6 +219,9 @@ const HennaPoster = () => {
           >
             آية الأشوح
           </h2>
+          <p className="font-body text-xs mt-1" style={{ color: creamSoft }} dir="ltr">
+            Aya Al-Ashwah
+          </p>
         </div>
 
         {/* Poetic line */}
@@ -220,6 +232,11 @@ const HennaPoster = () => {
           يا ليلة الحنّا يا ليلة العرس
           <br />
           فرحة وطن في غربة الناس
+        </p>
+        <p className="font-body text-[11px] italic leading-relaxed" style={{ color: creamSoft, opacity: 0.8 }} dir="ltr">
+          En hennaaften, en bryllupsnat —
+          <br />
+          et stykke hjemland midt i det fremmede.
         </p>
 
         {/* Decorative divider with star */}
@@ -249,6 +266,9 @@ const HennaPoster = () => {
           >
             ١٣ - ٦ - ٢٠٢٦
           </p>
+          <p className="font-body text-xs tracking-wide" style={{ color: creamSoft, opacity: 0.85 }} dir="ltr">
+            Lørdag d. 13. juni 2026
+          </p>
         </div>
 
         {/* Location */}
@@ -264,18 +284,26 @@ const HennaPoster = () => {
           </div>
           <p className="font-display text-xl" style={{ color: cream }}>آرهوس</p>
           <p className="font-body text-sm" style={{ color: creamSoft }}>الدنمارك</p>
+          <p className="font-body text-xs" style={{ color: creamSoft, opacity: 0.85 }} dir="ltr">
+            Aarhus · Danmark
+          </p>
         </div>
 
         <div className="pt-3 animate-fade-up delay-700">
           <Countdown />
         </div>
 
-        <div className="pt-3 flex items-center justify-center gap-2">
-          <span style={{ color: gold }}>♥</span>
-          <p className="font-amiri text-sm" style={{ color: creamSoft }}>
-            بحضوركم تكتمل فرحتنا
+        <div className="pt-3 flex flex-col items-center justify-center gap-1">
+          <div className="flex items-center gap-2">
+            <span style={{ color: gold }}>♥</span>
+            <p className="font-amiri text-sm" style={{ color: creamSoft }}>
+              بحضوركم تكتمل فرحتنا
+            </p>
+            <span style={{ color: gold }}>♥</span>
+          </div>
+          <p className="font-body text-[11px] italic" style={{ color: creamSoft, opacity: 0.8 }} dir="ltr">
+            Vores glæde bliver først hel, når I er der.
           </p>
-          <span style={{ color: gold }}>♥</span>
         </div>
       </div>
     </div>
@@ -322,6 +350,9 @@ const PosterBody = ({
     <p className="font-amiri text-base animate-fade-up delay-100" style={{ color: mutedColor }}>
       أهلاً وسهلاً بكم في
     </p>
+    <p className="font-body text-[11px] tracking-wide -mt-2" style={{ color: mutedColor, opacity: 0.85 }} dir="ltr">
+      Velkommen til
+    </p>
 
     <div className="relative animate-fade-up delay-200">
       <h1
@@ -338,11 +369,17 @@ const PosterBody = ({
           </span>
         </>
       )}
+      <p className="font-body text-xs tracking-[0.3em] mt-1" style={{ color: accentColor }} dir="ltr">
+        HENNA-AFTENEN
+      </p>
     </div>
 
-    <div className="space-y-2 animate-fade-up delay-300">
+    <div className="space-y-1 animate-fade-up delay-300">
       <p className="font-body text-sm tracking-widest" style={{ color: accentColor }}>
         للعروس
+      </p>
+      <p className="font-body text-[10px] tracking-[0.25em]" style={{ color: accentColor, opacity: 0.85 }} dir="ltr">
+        TIL BRUDEN
       </p>
       <h2
         className="font-display text-4xl sm:text-5xl"
@@ -350,6 +387,9 @@ const PosterBody = ({
       >
         آية الأشوح
       </h2>
+      <p className="font-body text-xs" style={{ color: bodyColor }} dir="ltr">
+        Aya Al-Ashwah
+      </p>
     </div>
 
     <div className="flex justify-center py-1">
@@ -360,6 +400,11 @@ const PosterBody = ({
       نتشارك معكم أجمل اللحظات
       <br />
       في ليلة من تراثنا الفلسطيني الأصيل
+    </p>
+    <p className="font-body text-[11px] italic leading-relaxed" style={{ color: bodyColor, opacity: 0.85 }} dir="ltr">
+      Vi glæder os til at dele de smukkeste øjeblikke med jer —
+      <br />
+      en aften i ægte palæstinensisk tradition.
     </p>
 
     {/* Decorative divider */}
@@ -381,6 +426,9 @@ const PosterBody = ({
       </div>
       <p className="font-body text-sm" style={{ color: mutedColor }}>السبت</p>
       <p className="font-display text-3xl" style={{ color: dateColor }}>١٣ - ٦ - ٢٠٢٦</p>
+      <p className="font-body text-xs tracking-wide" style={{ color: mutedColor }} dir="ltr">
+        Lørdag d. 13. juni 2026
+      </p>
     </div>
 
     <div className="space-y-1 animate-fade-up delay-700">
@@ -395,17 +443,23 @@ const PosterBody = ({
       </div>
       <p className="font-display text-xl" style={{ color: brideColor }}>آرهوس</p>
       <p className="font-body text-sm" style={{ color: bodyColor }}>الدنمارك</p>
+      <p className="font-body text-xs" style={{ color: bodyColor, opacity: 0.85 }} dir="ltr">
+        Aarhus · Danmark
+      </p>
     </div>
 
     <div className="pt-3 animate-fade-up delay-700">
       <Countdown />
     </div>
 
-    <div className="pt-2">
+    <div className="pt-2 space-y-1">
       <div className="flex items-center justify-center gap-2">
         <span className="text-sm" style={{ color: accentColor }}>♥</span>
         <p className="font-amiri text-sm" style={{ color: mutedColor }}>برفقتكم تكتمل فرحتنا</p>
       </div>
+      <p className="font-body text-[11px] italic" style={{ color: mutedColor, opacity: 0.85 }} dir="ltr">
+        Vores glæde bliver først hel, når I er der.
+      </p>
     </div>
   </div>
 );

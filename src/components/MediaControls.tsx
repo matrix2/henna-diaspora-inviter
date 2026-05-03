@@ -2,9 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import { Pause, Play, Volume2, VolumeX } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-// Palestinian / Arabic oud instrumental (royalty-free).
-const SONG_URL =
-  "https://cdn.pixabay.com/download/audio/2022/10/30/audio_946b6e6b3a.mp3?filename=arabic-oud-traditional-126850.mp3";
+// Local Palestinian henna song (uploaded by user)
+const SONG_URL = `${import.meta.env.BASE_URL}audio/henna.mp3`;
 
 const MediaControls = () => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
