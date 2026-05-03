@@ -233,6 +233,11 @@ const HennaPoster = () => {
           <br />
           فرحة وطن في غربة الناس
         </p>
+        <p className="font-body text-[11px] italic leading-relaxed" style={{ color: creamSoft, opacity: 0.8 }} dir="ltr">
+          En hennaaften, en bryllupsnat —
+          <br />
+          et stykke hjemland midt i det fremmede.
+        </p>
 
         {/* Decorative divider with star */}
         <div className="flex items-center justify-center gap-3 py-1">
