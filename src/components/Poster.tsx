@@ -3,7 +3,7 @@ import tatreezStrip from "@/assets/tatreez-strip.jpg";
 import parchment from "@/assets/parchment-bg.jpg";
 import medallion from "@/assets/tatreez-medallion.png";
 import heritageBg from "@/assets/heritage-bg.png";
-import hennaBg from "@/assets/henna-palestine-bg.jpg";
+import hennaBg from "@/assets/henna-royal-bg.jpg";
 import Countdown from "./Countdown";
 import { cn } from "@/lib/utils";
 
@@ -116,24 +116,28 @@ const IvoryPoster = () => (
 
 /* =============== HENNA — completely new Palestinian heritage design =============== */
 const HennaPoster = () => {
-  const burgundy = "hsl(345 70% 35%)";
-  const gold = "hsl(42 75% 60%)";
-  const goldDeep = "hsl(38 65% 45%)";
-  const cream = "hsl(42 65% 88%)";
-  const creamSoft = "hsl(42 50% 78%)";
+  const gold = "hsl(42 80% 65%)";
+  const cream = "hsl(42 70% 92%)";
+  const creamSoft = "hsl(42 55% 82%)";
 
   return (
     <div
       key="henna"
       className="relative rounded-2xl overflow-hidden shadow-deep border-2 animate-fade-up"
-      style={{ borderColor: gold + "70" }}
+      style={{ borderColor: gold + "80" }}
     >
-      {/* Henna Palestinian background */}
+      {/* Royal henna background — burgundy velvet with gold mehndi frame */}
       <div className="absolute inset-0">
         <img src={hennaBg} alt="" className="w-full h-full object-cover" aria-hidden="true" />
       </div>
-      {/* Subtle dark overlay for readability */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[hsl(345_60%_8%)]/40 via-[hsl(345_50%_10%)]/30 to-[hsl(345_60%_8%)]/50" />
+      {/* Center vignette so text reads on the burgundy heart of the design */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(ellipse at center, hsl(345 60% 12% / 0.55) 0%, hsl(345 70% 8% / 0.35) 55%, transparent 100%)",
+        }}
+      />
 
       {/* Top gold ornamental frame */}
       <div className="relative px-10 sm:px-14 py-10 sm:py-12 text-center space-y-4">
@@ -220,7 +224,7 @@ const HennaPoster = () => {
             آية الأشوح
           </h2>
           <p className="font-body text-xs mt-1" style={{ color: creamSoft }} dir="ltr">
-            Aya Al-Ashwah
+            Aya El Achwah
           </p>
         </div>
 
@@ -388,7 +392,7 @@ const PosterBody = ({
         آية الأشوح
       </h2>
       <p className="font-body text-xs" style={{ color: bodyColor }} dir="ltr">
-        Aya Al-Ashwah
+        Aya El Achwah
       </p>
     </div>
 
