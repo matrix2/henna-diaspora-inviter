@@ -207,6 +207,9 @@ const HennaPoster = () => {
           >
             للعروس الفلسطينية
           </p>
+          <p className="font-body text-[10px] tracking-[0.25em] mb-2" style={{ color: creamSoft, opacity: 0.85 }} dir="ltr">
+            TIL DEN PALÆSTINENSISKE BRUD
+          </p>
           <h2
             className="font-display text-3xl sm:text-4xl"
             style={{
@@ -216,6 +219,9 @@ const HennaPoster = () => {
           >
             آية الأشوح
           </h2>
+          <p className="font-body text-xs mt-1" style={{ color: creamSoft }} dir="ltr">
+            Aya Al-Ashwah
+          </p>
         </div>
 
         {/* Poetic line */}
