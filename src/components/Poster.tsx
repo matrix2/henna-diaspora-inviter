@@ -165,6 +165,9 @@ const HennaPoster = () => {
         >
           من القدس إلى آرهوس
         </p>
+        <p className="font-body text-[11px] tracking-wide -mt-2" style={{ color: creamSoft, opacity: 0.8 }} dir="ltr">
+          Fra Jerusalem til Aarhus
+        </p>
 
         {/* Main title */}
         <div className="animate-fade-up delay-200">
@@ -177,6 +180,9 @@ const HennaPoster = () => {
           >
             ليلة الحنّاء
           </h1>
+          <p className="font-body text-xs tracking-[0.3em] mt-1" style={{ color: creamSoft }} dir="ltr">
+            HENNA-AFTENEN
+          </p>
         </div>
 
         {/* Bride section in ornate gold frame */}
