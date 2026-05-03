@@ -35,8 +35,14 @@ const Index = () => {
             <h2 className="font-display text-3xl gradient-gold-text mt-4 mb-2">
               تأكيد الحضور
             </h2>
+            <p className="font-body text-xs text-gold/80 tracking-[0.25em] mb-2" dir="ltr">
+              BEKRÆFT DELTAGELSE
+            </p>
             <p className="font-body text-sm text-muted-foreground">
               فرحتنا لا تكتمل إلا بوجودكم
+            </p>
+            <p className="font-body text-xs text-muted-foreground italic mt-1" dir="ltr">
+              Vores fest er ikke hel uden jer.
             </p>
           </div>
 
