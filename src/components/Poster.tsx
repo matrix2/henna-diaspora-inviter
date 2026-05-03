@@ -3,7 +3,7 @@ import tatreezStrip from "@/assets/tatreez-strip.jpg";
 import parchment from "@/assets/parchment-bg.jpg";
 import medallion from "@/assets/tatreez-medallion.png";
 import heritageBg from "@/assets/heritage-bg.png";
-import hennaBg from "@/assets/henna-palestine-bg.jpg";
+import hennaBg from "@/assets/henna-royal-bg.jpg";
 import Countdown from "./Countdown";
 import { cn } from "@/lib/utils";
 
