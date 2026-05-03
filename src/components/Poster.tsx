@@ -266,6 +266,9 @@ const HennaPoster = () => {
           >
             ١٣ - ٦ - ٢٠٢٦
           </p>
+          <p className="font-body text-xs tracking-wide" style={{ color: creamSoft, opacity: 0.85 }} dir="ltr">
+            Lørdag d. 13. juni 2026
+          </p>
         </div>
 
         {/* Location */}
@@ -281,18 +284,26 @@ const HennaPoster = () => {
           </div>
           <p className="font-display text-xl" style={{ color: cream }}>آرهوس</p>
           <p className="font-body text-sm" style={{ color: creamSoft }}>الدنمارك</p>
+          <p className="font-body text-xs" style={{ color: creamSoft, opacity: 0.85 }} dir="ltr">
+            Aarhus · Danmark
+          </p>
         </div>
 
         <div className="pt-3 animate-fade-up delay-700">
           <Countdown />
         </div>
 
-        <div className="pt-3 flex items-center justify-center gap-2">
-          <span style={{ color: gold }}>♥</span>
-          <p className="font-amiri text-sm" style={{ color: creamSoft }}>
-            بحضوركم تكتمل فرحتنا
+        <div className="pt-3 flex flex-col items-center justify-center gap-1">
+          <div className="flex items-center gap-2">
+            <span style={{ color: gold }}>♥</span>
+            <p className="font-amiri text-sm" style={{ color: creamSoft }}>
+              بحضوركم تكتمل فرحتنا
+            </p>
+            <span style={{ color: gold }}>♥</span>
+          </div>
+          <p className="font-body text-[11px] italic" style={{ color: creamSoft, opacity: 0.8 }} dir="ltr">
+            Vores glæde bliver først hel, når I er der.
           </p>
-          <span style={{ color: gold }}>♥</span>
         </div>
       </div>
     </div>
