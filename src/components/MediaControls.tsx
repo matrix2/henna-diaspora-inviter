@@ -113,11 +113,16 @@ const MediaControls = () => {
     }
   };
 
+  const hideUI = typeof window !== "undefined" && new URLSearchParams(window.location.search).has("capture");
+
   return (
     <>
       <audio ref={audioRef} src={SONG_URL} loop preload="auto" playsInline />
 
-      <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 px-3 py-2 rounded-full bg-card/90 border border-gold/50 backdrop-blur-md shadow-deep">
+      <div className={cn(
+        "fixed bottom-4 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 px-3 py-2 rounded-full bg-card/90 border border-gold/50 backdrop-blur-md shadow-deep",
+        hideUI && "hidden"
+      )}>
         <button
           onClick={toggleAudio}
           aria-label={playing ? "إيقاف الموسيقى" : "تشغيل الموسيقى"}
